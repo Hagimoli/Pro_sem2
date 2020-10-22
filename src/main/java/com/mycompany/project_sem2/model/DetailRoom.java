@@ -9,7 +9,11 @@ package com.mycompany.project_sem2.model;
  *
  * @author Hi-XV
  */
-public class RoomManagement {
-    private int roomId;
-   
+public class DetailRoom extends Customer{
+    public int idBill,idCustomer,idServiceOut;
+    public String nameService;
+    public double priceService;
+    
+    
+    
 }

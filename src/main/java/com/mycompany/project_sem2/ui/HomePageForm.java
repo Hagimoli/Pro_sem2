@@ -5,7 +5,13 @@
  */
 package com.mycompany.project_sem2.ui;
 
+import com.mycompany.project_sem2.dao.InputServiceDao;
+import com.mycompany.project_sem2.model.InputService;
 import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,11 +19,33 @@ import java.awt.CardLayout;
  */
 public class HomePageForm extends javax.swing.JFrame {
 
+    DefaultComboBoxModel model1 = null;
     /**
      * Creates new form HomePageForm
      */
     public HomePageForm() {
         initComponents();
+        model1 = new DefaultComboBoxModel();
+        try {
+            InputServiceDao dao1 = new InputServiceDao();
+            List<InputService> list1 = dao1.showNameSupplier();
+            
+//            if (list1.size() > 0) {
+                for (InputService item : list1) {
+                    model1.setSelectedItem(new String[]{
+                        item.getNameSupplier()
+                        
+                    });
+                }
+
+//            } 
+//            else {
+//                JOptionPane.showMessageDialog(this, "No product found! ");
+//            }
+        } 
+        catch (Exception e) { JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        listNameSupplier.setModel(model1);
     }
 
     /**
@@ -41,8 +69,8 @@ public class HomePageForm extends javax.swing.JFrame {
         pnlCardRoom = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnDetailsRoom = new javax.swing.JButton();
+        btnBook = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -52,7 +80,24 @@ public class HomePageForm extends javax.swing.JFrame {
         pnlCardEmployee = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pnlCardService = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        btnAddSupplier = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtNameService = new javax.swing.JTextField();
+        listNameSupplier = new javax.swing.JComboBox<>();
+        txtQuantity = new javax.swing.JTextField();
+        txtPrice = new javax.swing.JTextField();
+        txtTotalPrice = new javax.swing.JTextField();
+        txtDescription = new javax.swing.JTextField();
+        btnSave = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         pnlCardStatistics = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -142,11 +187,21 @@ public class HomePageForm extends javax.swing.JFrame {
 
         pnlCardRoom.setLayout(new java.awt.GridLayout(3, 5, 5, 5));
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("Name Room");
 
-        jButton1.setText("jButton1");
+        btnDetailsRoom.setText("Details");
+        btnDetailsRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailsRoomActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("jButton2");
+        btnBook.setText("Book");
+        btnBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("jLabel5");
 
@@ -158,14 +213,14 @@ public class HomePageForm extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnDetailsRoom)
                         .addGap(102, 102, 102)
-                        .addComponent(jButton2))
+                        .addComponent(btnBook))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(75, 75, 75)
                         .addComponent(jLabel5)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,8 +231,8 @@ public class HomePageForm extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnDetailsRoom)
+                    .addComponent(btnBook))
                 .addContainerGap())
         );
 
@@ -187,7 +242,7 @@ public class HomePageForm extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addGap(0, 320, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +255,7 @@ public class HomePageForm extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addGap(0, 320, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,7 +268,7 @@ public class HomePageForm extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addGap(0, 320, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +281,7 @@ public class HomePageForm extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addGap(0, 320, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +294,7 @@ public class HomePageForm extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addGap(0, 320, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +315,7 @@ public class HomePageForm extends javax.swing.JFrame {
             .addGroup(pnlCardEmployeeLayout.createSequentialGroup()
                 .addGap(160, 160, 160)
                 .addComponent(jLabel1)
-                .addContainerGap(615, Short.MAX_VALUE))
+                .addContainerGap(470, Short.MAX_VALUE))
         );
         pnlCardEmployeeLayout.setVerticalGroup(
             pnlCardEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,25 +327,135 @@ public class HomePageForm extends javax.swing.JFrame {
 
         jPanel3.add(pnlCardEmployee, "card3");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setText("3");
+        pnlCardService.setLayout(new java.awt.GridLayout(1, 0));
 
-        javax.swing.GroupLayout pnlCardServiceLayout = new javax.swing.GroupLayout(pnlCardService);
-        pnlCardService.setLayout(pnlCardServiceLayout);
-        pnlCardServiceLayout.setHorizontalGroup(
-            pnlCardServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCardServiceLayout.createSequentialGroup()
-                .addGap(195, 195, 195)
-                .addComponent(jLabel4)
-                .addContainerGap(580, Short.MAX_VALUE))
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel7.setText("Input Service");
+
+        btnAddSupplier.setText("Add  Supplier");
+
+        jLabel4.setText("Name service:");
+
+        jLabel9.setText("Quanttity:");
+
+        jLabel10.setText("Price:");
+
+        jLabel11.setText("Total price:");
+
+        jLabel12.setText("Description:");
+
+        jLabel13.setText("Name supplier:");
+
+        txtNameService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameServiceActionPerformed(evt);
+            }
+        });
+
+        listNameSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        listNameSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listNameSupplierActionPerformed(evt);
+            }
+        });
+
+        txtTotalPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalPriceActionPerformed(evt);
+            }
+        });
+
+        btnSave.setText("Save");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNameService, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(listNameSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAddSupplier)
+                    .addComponent(btnSave))
+                .addGap(34, 34, 34))
         );
-        pnlCardServiceLayout.setVerticalGroup(
-            pnlCardServiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCardServiceLayout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(jLabel4)
-                .addContainerGap(303, Short.MAX_VALUE))
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(53, 53, 53)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtNameService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(listNameSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(btnSave)
+                .addGap(28, 28, 28)
+                .addComponent(btnAddSupplier)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
+
+        pnlCardService.add(jPanel10);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel14.setText("Output Service");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(jLabel14)
+                .addContainerGap(121, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel14)
+                .addContainerGap(433, Short.MAX_VALUE))
+        );
+
+        pnlCardService.add(jPanel11);
 
         jPanel3.add(pnlCardService, "card4");
 
@@ -304,7 +469,7 @@ public class HomePageForm extends javax.swing.JFrame {
             .addGroup(pnlCardStatisticsLayout.createSequentialGroup()
                 .addGap(154, 154, 154)
                 .addComponent(jLabel2)
-                .addContainerGap(621, Short.MAX_VALUE))
+                .addContainerGap(476, Short.MAX_VALUE))
         );
         pnlCardStatisticsLayout.setVerticalGroup(
             pnlCardStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,6 +526,31 @@ public class HomePageForm extends javax.swing.JFrame {
         layout.show(jPanel3, "card5");
     }//GEN-LAST:event_btnStatisticsActionPerformed
 
+    private void btnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookActionPerformed
+        BookRoom form = new BookRoom();
+        form.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnBookActionPerformed
+
+    private void btnDetailsRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsRoomActionPerformed
+        // TODO add your handling code here:
+        DetailsRoomForm form = new DetailsRoomForm();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnDetailsRoomActionPerformed
+
+    private void txtNameServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameServiceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameServiceActionPerformed
+
+    private void txtTotalPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalPriceActionPerformed
+
+    private void listNameSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listNameSupplierActionPerformed
+        
+    }//GEN-LAST:event_listNameSupplierActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -397,21 +587,32 @@ public class HomePageForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddSupplier;
+    private javax.swing.JButton btnBook;
+    private javax.swing.JButton btnDetailsRoom;
     private javax.swing.JButton btnEmployeeManager;
     private javax.swing.JButton btnRoomManager;
+    private javax.swing.JButton btnSave;
     private javax.swing.JButton btnServiceManager;
     private javax.swing.JButton btnStatistics;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -420,6 +621,7 @@ public class HomePageForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JComboBox<String> listNameSupplier;
     private javax.swing.JMenu mbtnBookRoom;
     private javax.swing.JMenu mbtnCalculator;
     private javax.swing.JMenu mbtnCustomerManagement;
@@ -428,5 +630,10 @@ public class HomePageForm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlCardRoom;
     private javax.swing.JPanel pnlCardService;
     private javax.swing.JPanel pnlCardStatistics;
+    private javax.swing.JTextField txtDescription;
+    private javax.swing.JTextField txtNameService;
+    private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtTotalPrice;
     // End of variables declaration//GEN-END:variables
 }

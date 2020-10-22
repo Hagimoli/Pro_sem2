@@ -15,7 +15,7 @@ import java.sql.DriverManager;
 public class DatabaseHelper {
     public static Connection openConnection() throws Exception{
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://localhost;database=DemoDB;";  
+            String connectionUrl = "jdbc:sqlserver://localhost;database=MotelManager;";  
             Connection con = DriverManager.getConnection(connectionUrl,"sa","0123");
             
             return con;
