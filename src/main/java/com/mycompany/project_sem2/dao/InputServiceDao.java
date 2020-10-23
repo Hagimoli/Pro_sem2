@@ -33,7 +33,7 @@ public class InputServiceDao {
             pstmt.setDouble(3, inputService.getPrice());
             pstmt.setDouble(4, inputService.getTotalPrice());
             pstmt.setString(5, inputService.getDescription());
-            pstmt.setTime(6, inputService.getImportDate());
+            pstmt.setString(6, inputService.getImportDate());
             pstmt.setString(7, inputService.getNameSupplier());
             
             
@@ -59,14 +59,14 @@ public class InputServiceDao {
 //FIND 
    private void fillInputService(InputService inputService, final ResultSet rs) throws Exception{
         inputService.setIdServerIn(rs.getInt("IdServiceIn"));
-        inputService.setIdSupplier(rs.getInt("IdSupplier"));
-        inputService.setAddress(rs.getString("Address"));
+//        inputService.setIdSupplier(rs.getInt("IdSupplier"));
+//        inputService.setAddress(rs.getString("Address"));
         inputService.setDescription(rs.getString("Description"));
-        inputService.setImportDate(rs.getTime("ImportDate"));
-        inputService.setNameSaler(rs.getString("NameSaler"));
+        inputService.setImportDate(rs.getString("ImportDate"));
+//        inputService.setNameSaler(rs.getString("NameSaler"));
         inputService.setNameService(rs.getString("NameService"));
         inputService.setNameSupplier(rs.getString("NameSupplier"));
-        inputService.setPhoneSupplier(rs.getString("PhoneSupplier"));
+//        inputService.setPhoneSupplier(rs.getString("PhoneSupplier"));
         inputService.setPrice(rs.getDouble("Price"));
         inputService.setTotalPrice(rs.getDouble("TotalPrice"));
         inputService.setQuantity(rs.getInt("Quantity"));
@@ -85,6 +85,28 @@ public class InputServiceDao {
         inputService.setPhoneSupplier(rs.getString("PhoneSupplier"));
         
                
+    }
+   
+   public List<InputService> findByNameService(String nameService)throws Exception{
+       String sql = "select * from InputService where NameService like ?";
+        try(
+                Connection con = DatabaseHelper.openConnection();
+                PreparedStatement pstmt = con.prepareStatement(sql);
+                ){
+                pstmt.setString(1, "%" + nameService + "%");
+                List<InputService> list = new ArrayList<>();
+                
+                try(ResultSet rs = pstmt.executeQuery()){
+                    if(rs.next()){
+                       InputService inputService = new InputService();
+                        fillInputService(inputService, rs);
+                        list.add(inputService);
+                    }
+                }
+            return list;
+            
+        }
+        
     }
    
     public List<InputService> findByNameSupplier(String nameSupplier)throws Exception{
@@ -108,7 +130,7 @@ public class InputServiceDao {
         }
         
     }
-    
+//SHOW-NAME-SUPPLIER    
     public List<InputService> showNameSupplier()throws Exception{
        String sql = "select NameSupplier from ServiceSupplier  ";
         try(
@@ -134,7 +156,7 @@ public class InputServiceDao {
     
 //DELETE
     public boolean deleteServiceIn(int idServiceIn) throws Exception {
-        String sql = "delete from InputService where IdServiceIn = ?";
+        String sql = " delete from InputService where IdServiceIn = ?";
         try (
                 Connection con = DatabaseHelper.openConnection();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -197,8 +219,8 @@ public class InputServiceDao {
      }
     
     public boolean updateService(InputService inputService) throws Exception {
-         String sql = "update InputService set NameService = ?,Quantity = ?,Price = ?,TotalPrice = ?,Description = ?,ImportDate = ?, NameSupplier = ?"
-                + "Where NameService = ? and IdServiceIn = ?";
+         String sql = "update InputService set NameService=?,Quantity=?, Price= ?,TotalPrice=?,Description=? ,ImportDate=?,NameSupplier=?\n" +
+" where IdServiceIn = ?";
         try (
                 Connection con = DatabaseHelper.openConnection();
                 PreparedStatement pstmt = con.prepareStatement(sql);){
@@ -207,10 +229,10 @@ public class InputServiceDao {
             pstmt.setDouble(3, inputService.getPrice());
             pstmt.setDouble(4, inputService.getTotalPrice());
             pstmt.setString(5, inputService.getDescription());
-            pstmt.setTime(6, inputService.getImportDate());
+            pstmt.setString(6, inputService.getImportDate());
             pstmt.setString(7, inputService.getNameSupplier());
-            pstmt.setString(8, inputService.getNameService());
-            pstmt.setInt(9, inputService.getIdServerIn());
+            pstmt.setInt(8, inputService.getIdServerIn());
+            
             return pstmt.executeUpdate() > 0;
         }
      }
@@ -250,5 +272,24 @@ public class InputServiceDao {
             return list;
         }
     }
+    
+//   public void nameSupplier(){
+//       String sql = "select NameSupplier from ServiceSupplier ";
+//       try (
+//                Connection con = DatabaseHelper.openConnection();
+//                PreparedStatement pstmt = con.prepareStatement(sql);) {
+//            List<InputService> list = new ArrayList<>();
+//
+//            try (ResultSet rs = pstmt.executeQuery()) {
+//                while (rs.next()) {
+//                    InputService supplier = new InputService();
+//                    fillInputService(supplier, rs);
+//                    list.add(supplier);
+//                }
+//            }
+//            return list;
+//        }
+//   }
+    
     
 }

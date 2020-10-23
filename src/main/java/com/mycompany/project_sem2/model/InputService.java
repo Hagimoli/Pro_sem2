@@ -5,7 +5,9 @@
  */
 package com.mycompany.project_sem2.model;
 
+//import java.sql.Date;
 import java.sql.Time;
+import java.util.Date;
 
 /**
  *
@@ -13,13 +15,15 @@ import java.sql.Time;
  */
 public class InputService {
     private int idServerIn,idSupplier,quantity;
-    private String nameService,description,nameSupplier,phoneSupplier,address,nameSaler;
+    private String nameService,description,nameSupplier,phoneSupplier,address,nameSaler,importDate;
     private double price,totalPrice;
-    private Time importDate;
+//    private Time importDate;
+//    private Date importDate;
 
     public InputService() {
     }
-    public InputService(int idServerIn, int idSupplier, int quantity, String nameService, String description, String nameSupplier, String phoneSupplier, String address, String nameSaler, double price, double totalPrice, Time importDate) {
+
+    public InputService(int idServerIn, int idSupplier, int quantity, String nameService, String description, String nameSupplier, String phoneSupplier, String address, String nameSaler, String importDate, double price, double totalPrice) {
         this.idServerIn = idServerIn;
         this.idSupplier = idSupplier;
         this.quantity = quantity;
@@ -29,9 +33,9 @@ public class InputService {
         this.phoneSupplier = phoneSupplier;
         this.address = address;
         this.nameSaler = nameSaler;
+        this.importDate = importDate;
         this.price = price;
         this.totalPrice = totalPrice;
-        this.importDate = importDate;
     }
 
     public int getIdServerIn() {
@@ -106,6 +110,14 @@ public class InputService {
         this.nameSaler = nameSaler;
     }
 
+    public String getImportDate() {
+        return importDate;
+    }
+
+    public void setImportDate(String importDate) {
+        this.importDate = importDate;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -122,13 +134,6 @@ public class InputService {
         this.totalPrice = totalPrice;
     }
 
-    public Time getImportDate() {
-        return importDate;
-    }
-
-    public void setImportDate(Time importDate) {
-        this.importDate = importDate;
-    }
     
     
 }

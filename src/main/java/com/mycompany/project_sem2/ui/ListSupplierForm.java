@@ -61,6 +61,7 @@ public class ListSupplierForm extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtId = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         btnFindByPhone = new javax.swing.JButton();
@@ -90,6 +91,7 @@ public class ListSupplierForm extends javax.swing.JFrame {
         jPopupMenu1.add(mnuUpdateSupplier);
 
         jPanelUpdate.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Supplier", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanelUpdate.setMinimumSize(new java.awt.Dimension(300, 300));
 
         jLabel6.setText("Name supplier:");
 
@@ -108,32 +110,37 @@ public class ListSupplierForm extends javax.swing.JFrame {
 
         jLabel4.setText("jLabel4");
 
-        txtId.setText("jLabel7");
+        txtId.setText("Id");
+
+        jButton1.setText("Back");
 
         javax.swing.GroupLayout jPanelUpdateLayout = new javax.swing.GroupLayout(jPanelUpdate);
         jPanelUpdate.setLayout(jPanelUpdateLayout);
         jPanelUpdateLayout.setHorizontalGroup(
             jPanelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUpdateLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
             .addGroup(jPanelUpdateLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(jPanelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel4))
-                .addGap(41, 41, 41)
-                .addGroup(jPanelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtId)
-                    .addGroup(jPanelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtNameSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                        .addComponent(txtPhoneSupplier)
-                        .addComponent(txtAddress)
-                        .addComponent(txtNameSaler)))
+                    .addGroup(jPanelUpdateLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel4))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtId)
+                            .addGroup(jPanelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNameSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                                .addComponent(txtPhoneSupplier)
+                                .addComponent(txtAddress)
+                                .addComponent(txtNameSaler))))
+                    .addGroup(jPanelUpdateLayout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(jButton1)
+                        .addGap(70, 70, 70)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelUpdateLayout.setVerticalGroup(
@@ -159,13 +166,15 @@ public class ListSupplierForm extends javax.swing.JFrame {
                     .addGroup(jPanelUpdateLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE))
+                        .addContainerGap(97, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUpdateLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(btnUpdate)
-                .addGap(36, 36, 36))
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnUpdate)
+                            .addComponent(jButton1))
+                        .addGap(58, 58, 58))))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -499,6 +508,7 @@ public class ListSupplierForm extends javax.swing.JFrame {
     private javax.swing.JButton btnFindByName;
     private javax.swing.JButton btnFindByPhone;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

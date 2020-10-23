@@ -52,6 +52,7 @@ public class SupplierForm extends javax.swing.JFrame {
         txtAddress = new javax.swing.JTextField();
         txtNameSaler = new javax.swing.JTextField();
         btnAddSupplier = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnList = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -129,6 +130,8 @@ public class SupplierForm extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Reset");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -143,8 +146,10 @@ public class SupplierForm extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(414, 414, 414)
-                        .addComponent(btnAddSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                        .addGap(308, 308, 308)
+                        .addComponent(jButton1)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnAddSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                         .addGap(38, 38, 38))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -174,7 +179,9 @@ public class SupplierForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txtNameSaler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(btnAddSupplier)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddSupplier)
+                    .addComponent(jButton1))
                 .addGap(30, 30, 30))
         );
 
@@ -259,13 +266,6 @@ public class SupplierForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error:" + e.getMessage());
         }
         
-        
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_btnAddSupplierActionPerformed
 
     private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
@@ -343,6 +343,7 @@ public class SupplierForm extends javax.swing.JFrame {
     private javax.swing.JButton btnFindByPhone;
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
